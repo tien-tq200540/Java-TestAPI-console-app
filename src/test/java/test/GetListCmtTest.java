@@ -2,26 +2,20 @@ package test;
 
 import static io.restassured.RestAssured.given;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import com.google.gson.Gson;
 
-import io.restassured.RestAssured;
+import base.BaseClassTest;
 import io.restassured.response.Response;
 import models.AssertTest;
 import models.BaseResponse;
 import models.NotiTest;
 
-public class GetListCmtTest {
-	@Before
-    public void init() {
-        RestAssured.baseURI = "https://auctions-app-2.herokuapp.com";
-        RestAssured.basePath = "/api/comments";
-    }
+public class GetListCmtTest extends BaseClassTest {
 	
 	public BaseResponse getResCmt(String index, String count, String id) {
-		Response res = given().param("index", index).and().param("count", count).when().get("/" + id);
+		Response res = given().param("index", index).and().param("count", count).when().get("/comments/" + id);
 		int statusCode = res.getStatusCode();
 		if (statusCode == 500) return null;
 		Gson g = new Gson();
@@ -35,9 +29,9 @@ public class GetListCmtTest {
 		
 		System.out.println("Unit test 1: The code and message strings shall be not NULL as well as non-empty:");
 		if (rp == null) {
-			System.out.println("Error!\nFailed Test");
-			System.out.println();
-			return;
+			rp = new BaseResponse();
+			rp.code = "Unknown";
+			rp.message = "Unknown";
 		}
 		assert(rp.code != null && !"".equals(rp.code));
         assert(rp.message != null && !"".equals(rp.message));
@@ -53,9 +47,9 @@ public class GetListCmtTest {
 		
 		System.out.println("Unit test 2: The code and message strings shall be not NULL as well as non-empty:");
 		if (rp == null) {
-			System.out.println("Error!\nFailed Test");
-			System.out.println();
-			return;
+			rp = new BaseResponse();
+			rp.code = "Unknown";
+			rp.message = "Unknown";
 		}
 		assert(rp.code != null && !"".equals(rp.code));
         assert(rp.message != null && !"".equals(rp.message));
@@ -71,9 +65,9 @@ public class GetListCmtTest {
 		
 		System.out.println("Unit test 3: The code and message strings shall be not NULL as well as non-empty:");
 		if (rp == null) {
-			System.out.println("Error!\nFailed Test");
-			System.out.println();
-			return;
+			rp = new BaseResponse();
+			rp.code = "Unknown";
+			rp.message = "Unknown";
 		}
 		assert(rp.code != null && !"".equals(rp.code));
         assert(rp.message != null && !"".equals(rp.message));
@@ -90,9 +84,9 @@ public class GetListCmtTest {
 		
 		System.out.println("Unit test 4: The code and message strings shall be not NULL as well as non-empty:");
 		if (rp == null) {
-			System.out.println("Error!\nFailed Test");
-			System.out.println();
-			return;
+			rp = new BaseResponse();
+			rp.code = "Unknown";
+			rp.message = "Unknown";
 		}
 		assert(rp.code != null && !"".equals(rp.code));
         assert(rp.message != null && !"".equals(rp.message));
@@ -110,15 +104,9 @@ public class GetListCmtTest {
 		
 		BaseResponse rp = getResCmt("a", "a", "1");
 		if (rp == null) {
-			System.out.println("Expected:");
-			System.out.println("1001");
-			System.out.println("index: 7006 &count: 7006");
-			System.out.println("Actual:");
-			System.out.println("Code: Unknown");
-			System.out.println("Message: Unknown");
-			System.out.println("Error!\nFailed Test");
-			System.out.println();
-			return;
+			rp = new BaseResponse();
+			rp.code = "Unknown";
+			rp.message = "Unknown";
 		}
         assert(rp.code != null && !"".equals(rp.code));
         assert(rp.message != null && !"".equals(rp.message));
