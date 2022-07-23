@@ -14,6 +14,7 @@ import models.LoginResponse;
 import models.NotiTest;
 
 public class CreateCmtTest extends BaseClassTest {
+	
 	BaseResponse getCreateCmtRes(String email, String password, String id, String text) {
         LoginResponse login = LoginTest.getResultLogin(email, password);
         if (login.data == null) {
