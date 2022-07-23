@@ -23,7 +23,7 @@ public class LoginTest extends BaseClassTest {
 		
 		Gson g = new Gson();
         LoginResponse rp = g.fromJson(res.asString(), LoginResponse.class);
-        rp.data.user.setPassword(password);
+        if (rp.data != null) rp.data.user.setPassword(password);
 		return rp;
 	}
 
