@@ -15,10 +15,14 @@ import models.NotiTest;
 
 public class GetListLikeTest extends BaseClassTest {
 	public BaseResponse getListLikeRes(String email, String password, String index, String count, String id) {
-		if (email.equals("") || password.equals("")) return null;
-		LoginResponse login = LoginTest.getResultLogin(email, password);
-		Response res = given().header("Authorization", "Bearer " + login.data.getAccess_token()).and().param("index", index).and().param("count", count).when().get("/likes/" + id);
-		if (res.getStatusCode() == 404) return null;
+		Response res;
+		if (email.equals("") || password.equals("")) {
+			res = given().header("Authorization", "Bearer " + "").and().param("index", index).and().param("count", count).when().get("/likes/" + id);
+		} else {
+			LoginResponse login = LoginTest.getResultLogin(email, password);
+			res = given().header("Authorization", "Bearer " + login.data.getAccess_token()).and().param("index", index).and().param("count", count).when().get("/likes/" + id);
+			if (res.getStatusCode() == 404) return null;
+		}
 		Gson g = new Gson();
 		BaseResponse rp = g.fromJson(res.asString(), BaseResponse.class);
 		return rp;

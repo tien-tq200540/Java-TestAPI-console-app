@@ -18,11 +18,11 @@ public class ReadNewsTest extends BaseClassTest {
 	BaseResponse readNewsRes(String email, String password, String idNews) {
 		Response res;
 		if (email.equals("") && password.equals("")) {
-			System.out.println("Chưa đăng nhập");
-			System.out.println("Chưa đọc tin tức");
+			System.out.println("Chua dang nhap");
+			System.out.println("Chua doc tin tuc");
 			res = given().when().get("/news/read/" + idNews);
 		} else {
-			System.out.println("Đã đọc tin tức");
+			System.out.println("Da doc tin tuc");
 			LoginResponse login = LoginTest.getResultLogin(email, password);
 			res = given().header("Authorization", "Bearer " + login.data.getAccess_token()).when().get("/news/read/" + idNews);
 		}
@@ -101,9 +101,9 @@ public class ReadNewsTest extends BaseClassTest {
 		assert(rp.code != null && !"".equals(rp.code));
         assert(rp.message != null && !"".equals(rp.message));
         
-        NotiTest.notiTest("9996", rp.code, "Id truyền vào không tồn tại", rp.message);
+        NotiTest.notiTest("9993", rp.code, "ID không hợp lệ", rp.message);
         
-        AssertTest.assertTest("9996", rp.code, "Id truyền vào không tồn tại", rp.message);
+        AssertTest.assertTest("9993", rp.code, "ID không hợp lệ", rp.message);
 	}	
 	
 	@Test

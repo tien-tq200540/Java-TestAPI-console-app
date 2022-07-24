@@ -109,7 +109,7 @@ public class GetNewsTest extends BaseClassTest {
 	// index / count / index && count = char => code: 1001, mess: 7006
 	public void Test05(){
 		LoginResponse login = LoginTest.getResultLogin("tien20212@gmail.com", "123456");
-		Response res = given().header("Authorization", "Bearer " + login.data.getAccess_token()).and().param("index", "a").and().param("count", "1").when().get("/news");
+		Response res = given().header("Authorization", "Bearer " + login.data.getAccess_token()).and().param("index", "a").and().param("count", "5").when().get("/news");
 		BaseResponse rp = new BaseResponse();
 		if (res.getStatusCode() == 500) {
 			rp.code = "Unknown";
@@ -127,8 +127,8 @@ public class GetNewsTest extends BaseClassTest {
 		assert(rp.code != null && !"".equals(rp.code));
         assert(rp.message != null && !"".equals(rp.message));
         
-        NotiTest.notiTest("1001", rp.code, "index: 7006 &count ", rp.message);
+        NotiTest.notiTest("1001", rp.code, "index: 7006 &count: ", rp.message);
         
-        AssertTest.assertTest("1001", rp.code, "index: 7006 &count ", rp.message);
+        AssertTest.assertTest("1001", rp.code, "index: 7006 &count: ", rp.message);
 	}	
 }

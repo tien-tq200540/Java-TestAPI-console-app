@@ -89,26 +89,26 @@ public class GetListBidsTest extends BaseClassTest {
 		assert(rp.code != null && !"".equals(rp.code));
         assert(rp.message != null && !"".equals(rp.message));
         
-        NotiTest.notiTest("1000", rp.code, "OK", rp.message);
+        NotiTest.notiTest("9993", rp.code, "ID không hợp lệ", rp.message);
         
-        AssertTest.assertTest("1000", rp.code, "OK", rp.message);
+        AssertTest.assertTest("9993", rp.code, "ID không hợp lệ", rp.message);
 	}	
 	
 	@Test
 	public void Test05(){
-		BaseResponse rp = getListBidsRes("-1", "5", "4");
+		BaseResponse rp = getListBidsRes("-1", "5", "1");
 		
 		System.out.println("Unit test 5: The code and message strings shall be not NULL as well as non-empty:");
 		if (rp == null) {
-			System.out.println("Error!\nindex must be integer");
+			System.out.println("Error!\nFailed Test");
 			System.out.println();
 			return;
 		}
 		assert(rp.code != null && !"".equals(rp.code));
         assert(rp.message != null && !"".equals(rp.message));
         
-        NotiTest.notiTest("1000", rp.code, "OK", rp.message);
+        NotiTest.notiTest("1001", rp.code, "index: 7007 && count: ", rp.message);
         
-        AssertTest.assertTest("1000", rp.code, "OK", rp.message);
+        AssertTest.assertTest("1001", rp.code, "index: 7007 && count: ", rp.message);
 	}	
 }

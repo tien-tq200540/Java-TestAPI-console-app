@@ -89,9 +89,9 @@ public class GetListRatesTest extends BaseClassTest {
         assert(rp.code != null && !"".equals(rp.code));
         assert(rp.message != null && !"".equals(rp.message));
         
-        NotiTest.notiTest("1000", rp.code, "OK", rp.message);
+        NotiTest.notiTest("9993", rp.code, "ID không hợp lệ", rp.message);
         
-        AssertTest.assertTest("1000", rp.code, "OK", rp.message);
+        AssertTest.assertTest("9993", rp.code, "ID không hợp lệ", rp.message);
 
     }
 }

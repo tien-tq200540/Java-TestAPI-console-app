@@ -45,25 +45,25 @@ public class GetSearchTest extends BaseClassTest {
 			"1000", 
 			"9998", 
 			"1000", 
-			"9998", 
+			"1000", 
 			"1000",
 			"1000",
 			"1000",
-			"9998",
+			"1000",
 			"9998",
 			"9998"
 	};
 	public static final String[] messageExpected = { 
 			"OK", 
-			"Khong tim thay", 
-			"OK",
-			"Khong tim thay",
+			"Không tìm thấy", 
 			"OK",
 			"OK",
 			"OK",
-			"Khong tim thay",
-			"Khong tim thay",
-			"検索できません"
+			"OK",
+			"OK",
+			"OK",
+			"Không tìm thấy",
+			"Không tìm thấy"
 	};
 	
 	
